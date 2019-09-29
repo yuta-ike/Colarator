@@ -1,26 +1,23 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect, useCallback, useRef } from 'react';
+import Canvas from './Canvas.js'
 
 function App() {
+  const search = window.location.search
+
+  const result = search.match(/imgid=(?<imgid>[\w-]*)/)
+  const imgid = result !== null ? result.groups.imgid : null
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div>
+        <Canvas imgid={imgid}/>
+     </div>
     </div>
   );
 }
 
 export default App;
+//
+//  onChange={this.handleChangeFile}
+// <img src={this.state.image_src} />
+// <button onClick={this.clickPostBtn} type="button">投稿する</button>
